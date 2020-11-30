@@ -1,0 +1,78 @@
+package com.practice.books.dao;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="books")
+public class Book {
+	
+	@Id
+	@GeneratedValue
+	@Column(name="id")
+	private Long id;
+	
+	@Column(name="isbn")
+	private String isbn;
+	
+	@Column(name="title")
+	private String title;
+	
+	@Column(name="author")
+	private String author;
+
+	@Column(name="year")
+	private Integer year;
+	
+	private Book() {}
+	
+	public Book(String isbn, String title, String author, Integer year) {
+		this.isbn = isbn;
+		this.title = title;
+		this.author = author;
+		this.year = year;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public Integer getYear() {
+		return year;
+	}
+
+	public void setYear(Integer year) {
+		this.year = year;
+	}
+}
