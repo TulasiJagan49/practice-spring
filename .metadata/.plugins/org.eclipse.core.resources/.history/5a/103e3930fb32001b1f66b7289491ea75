@@ -1,0 +1,15 @@
+package com.practice.books.component;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.practice.books.dao.BookRepository;
+
+@Service
+public class BookComponent {
+	
+	@Autowired
+	private BookRepository bookRepository;
+	
+	private static final CsvMapper mapper = new CsvMapper();
+}

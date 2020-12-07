@@ -1,0 +1,5 @@
+package com.practice.books.dao;
+
+public class BookRepository {
+
+}

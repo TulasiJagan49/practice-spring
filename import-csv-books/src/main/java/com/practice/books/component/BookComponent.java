@@ -2,7 +2,9 @@ package com.practice.books.component;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +35,23 @@ public class BookComponent {
 			bookRepository.saveAll(read(Book.class, file.getInputStream()));
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public Book getBookByIsbn(String isbn) {
+		try {
+			return bookRepository.findByIsbn(isbn).get();
+		} catch (NoSuchElementException e) {
+			return new Book("No book with this ISBN", "No book exists", "No book exists", 0000);
+		}
+	}
+	
+	public List<Book> getBookByTitle(String title) {
+		try {
+			return bookRepository.findByTitleContaining(title);
+		} catch (NoSuchElementException e) {
+			List<Book> book = Collections.singletonList(new Book("No Book Exists","No Book Exists","No Book Exists",0000));
+			return book;
 		}
 	}
 }
